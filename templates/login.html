@@ -1,0 +1,25 @@
+<div class="d-flex flex-column justify-content-center align-items-center login-div-form">
+    <form class="login-form border border-secondary rounded-3" action="{% url 'home' %}" method="post">
+        <h1 class="login-h1 text-light">Seja bem vindo!</h1>
+        <p class="text-light">Entre com o seu login do petshop.</p>
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="cpf" class="form-label login-label fw-bold">Cpf</label>
+    <input type="text" class="form-control" name="cpf" placeholder="Cpf" required>
+     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label login-label fw-bold">Senha</label>
+    <input type="password" class="form-control" name="password" placeholder="Senha" required>
+  </div>
+  <button type="submit" class="mb-3 mt-3 btn btn-primary login-button ">Entrar</button>
+            {% if messages %}
+     {% for message in messages %}
+        <div {% if message.tags %} class="alert {{ message.tags }} alert-dismissible fade show login-div-alert" role="alert" {% endif %}>
+            {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+     {% endfor %}
+    {% endif %}
+    </form>
+</div>
