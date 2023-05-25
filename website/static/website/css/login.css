@@ -1,0 +1,26 @@
+.login-div-form {
+    margin-top: 13em;
+}
+
+.login-form {
+    padding: 32px;
+    max-width: 310px;
+}
+
+.login-h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.login-label {
+    font-size: 14px;
+}
+
+.login-div-alert {
+    margin-top: 14px;
+}
+
+
+.login-button {
+    width: 100%;
+}
