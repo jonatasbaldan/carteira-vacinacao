@@ -4,32 +4,8 @@
     {% if not user.is_authenticated %}
         {% include 'login.html' %}
     {% else %}
-{% comment %}    <div class="d-flex p-2 py-5">
-    <form class="row g-3">
-    <div class="col-md-3">
-        <label for="id" class="form-label">Código </label>
-        <input type="text" name="id" class="form-control" />
-        </div>
-        <div class="col-md-3">
-        <label for="nome" class="form-label">Nome </label>
-        <input type="text" name="nome" class="form-control" />
-            </div>
-        <div class="w-100"></div>
-            <div class="col-md-3">
-    <label for="cpf" class="form-label">CPF </label>
-        <input type="text" name="cpf" class="form-control" />
-                </div>
-                <div class="col-md-3">
-    <label for="telefone" class="form-label">Telefone </label>
-        <input type="text" name="telefone" class="form-control" />
-                    </div>
-        <div class="col-3  align-self-end">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-            </div>
-</form>
-</div>{% endcomment %}
 
-        <h1 class="mt-5">Seja bem vindo, {% if user.is_authenticated %}{{ user.username }}{% endif %}!</h1>
+    <h1 class="mt-5">Seja bem vindo, {% if user.is_authenticated %}{{ user_data.pessoa }}{% endif %}!</h1>
         {% if user.is_authenticated %}
             <a class="mb-5" href="{% url 'logout' %}">Sair</a>
         {% endif %}
@@ -44,18 +20,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Luque</td>
-      <td>Beagle</td>
-      <td>Henrique Cabreira</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Rex</td>
-      <td>SRD</td>
-      <td>Henrique Cabreira</td>
-    </tr>
+  {% if animals %}
+    {% for animal in animals %}
+        <tr>
+            <td>{{ animal.id }}</td>
+            <td>{{ animal.nomeanimal }}</td>
+            <td>{{ animal.raca }}</td>
+            <td>{{ user_data.pessoa }}</td>
+        </tr>
+    {% endfor %}
+  {% endif %}
   </tbody>
 </table>
 
@@ -71,13 +45,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>20/04/2023 16:30:00</td>
-      <td>Luque</td>
-      <td> </td>
-      <td>Agendado</td>
-    </tr>
+        {% if schedules %}
+            {% for schedule in schedules %}
+                <tr>
+                <td>{{ schedule.id }}</td>
+                <td>{{ schedule.dt_agenda }}</td>
+                <td>{{ schedule.idanimal.nomeanimal }}</td>
+                <td>{{ schedule.idvacina.vacina_nome }}</td>
+                <td>{{ schedule.situacao }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
   </tbody>
 </table>
  {% endif %}
