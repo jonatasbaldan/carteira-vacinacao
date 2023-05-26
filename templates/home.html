@@ -16,7 +16,6 @@
       <th scope="col">Código</th>
       <th scope="col">Nome</th>
       <th scope="col">Raça</th>
-      <th scope="col">Pessoa</th>
     </tr>
   </thead>
   <tbody>
@@ -26,14 +25,13 @@
             <td>{{ animal.id }}</td>
             <td>{{ animal.nomeanimal }}</td>
             <td>{{ animal.raca }}</td>
-            <td>{{ user_data.pessoa }}</td>
         </tr>
     {% endfor %}
   {% endif %}
   </tbody>
 </table>
 
-<h2 class="py-3">Vacinas</h2>
+<h2 class="py-3">Próximas vacinas</h2>
 <table class="table table-striped table-dark table-hover table-bordered">
   <thead>
     <tr>
@@ -47,6 +45,7 @@
   <tbody>
         {% if schedules %}
             {% for schedule in schedules %}
+            {% if schedule.situacao != 'Realizado' %}
                 <tr>
                 <td>{{ schedule.id }}</td>
                 <td>{{ schedule.dt_agenda }}</td>
@@ -54,6 +53,7 @@
                 <td>{{ schedule.idvacina.vacina_nome }}</td>
                 <td>{{ schedule.situacao }}</td>
                 </tr>
+                {% endif %}
             {% endfor %}
         {% endif %}
   </tbody>
