@@ -36,8 +36,8 @@
   <thead>
     <tr>
       <th scope="col --bs-primary">Código</th>
-      <th scope="col --bs-primary">Data</th>
       <th scope="col --bs-primary">Animal</th>
+      <th scope="col --bs-primary">Data</th>
       <th scope="col --bs-primary">Vacinas</th>
       <th scope="col --bs-primary">Situação</th>
     </tr>
@@ -48,8 +48,36 @@
             {% if schedule.situacao != 'Realizado' %}
                 <tr>
                 <td>{{ schedule.id }}</td>
-                <td>{{ schedule.dt_agenda }}</td>
+                <td>{{ schedule.idanimal.nomeanimal  }}</td>
+                <td>{{ schedule.dt_agenda|date:'d/m/Y H:i:s' }}</td>
+                <td>{{ schedule.idvacina.vacina_nome }}</td>
+                <td>{{ schedule.situacao }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+  </tbody>
+</table>
+
+        <h2 class="py-3">Vacinas já efetuadas</h2>
+<table class="table table-striped table-dark table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col --bs-primary">Código</th>
+      <th scope="col --bs-primary">Animal</th>
+      <th scope="col --bs-primary">Data</th>
+      <th scope="col --bs-primary">Vacinas</th>
+      <th scope="col --bs-primary">Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% if schedules %}
+            {% for schedule in schedules|dictsort:'idanimal.nomeanimal' %}
+            {% if schedule.situacao == 'Realizado' %}
+                <tr>
+                <td>{{ schedule.id }}</td>
                 <td>{{ schedule.idanimal.nomeanimal }}</td>
+                <td>{{ schedule.dt_agenda|date:'d/m/Y H:i:s' }}</td>
                 <td>{{ schedule.idvacina.vacina_nome }}</td>
                 <td>{{ schedule.situacao }}</td>
                 </tr>

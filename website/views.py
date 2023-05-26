@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -23,8 +25,9 @@ def home(request):
                 agendas = ccv_agenda.objects.filter(idanimal=animal)
                 for agenda in agendas:
                     agendas_data.append(agenda)
+            agendas_sorted = sorted(agendas_data, key=lambda obj: obj.dt_agenda)
             return render(request, 'home.html',
-                          {'user_data': user_data, 'animals': animais_data, 'schedules': agendas_data})
+                          {'user_data': user_data, 'animals': animais_data, 'schedules': agendas_sorted})
         except:
             return render(request, 'home.html', {})
 
@@ -118,7 +121,9 @@ def populate_agenda(animal):
             id_animal = animal
             populate_vacina(agenda['idvacina'])
             id_vacina = ccv_vacinas.objects.get(id=agenda['idvacina'])
-            dt_agenda = parse_datetime(agenda['dt_agenda'])
+            data_formatted = datetime.strptime(agenda['dt_agenda'], '%d/%m/%Y %H:%M:%S')
+            dt_agenda = data_formatted
+            print(dt_agenda)
             situacao = agenda['situacao']
             ccv_agenda.objects.create(id=id,
                                       idanimal=id_animal,
