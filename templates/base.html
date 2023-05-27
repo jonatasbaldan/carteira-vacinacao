@@ -17,6 +17,9 @@
   </head>
 
 <body class="bg-body-tertiary">
+{% if user.is_authenticated %}
+{% include 'navbar.html' %}
+{% endif %}
 <div class="container">
              {% block content %}
          {% endblock %}
