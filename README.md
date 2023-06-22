@@ -65,7 +65,7 @@ O tutorial para inicializar o sistema se encontra no arquivo [TUTORIAL.md](/TUTO
 
 [Gabriel Jonatas - Linkedin](https://www.linkedin.com/in/gabriel-jonatas/)
 
-Gustavo Henrique da Silva
+[Gustavo Henrique - Github](https://www.github.com/gu-h-silva)
 
 ## Orientadora
 
