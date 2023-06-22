@@ -22,7 +22,7 @@ Relatório final do projeto, aonde se encontra todo o estudo de caso e referênc
 
 ## Apresentação do projeto
 
-Apresentação feita pelo Marcelo Jacomini e a amostra do sistema funcionando apresentado pelo Henrique Cabreira.
+Apresentação feita pelo Marcelo Jacomini e o funcionamento do sistema apresentado pelo Henrique Cabreira.
 
 **Youtube**: [Projeto Integrador - Univesp - Carteira Digital de Vacinação Animal](https://www.youtube.com/watch?v=J30o-mE1zmw)
 
